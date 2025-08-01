@@ -8,7 +8,7 @@ const RegisterPlans = () => {
     {
       name: 'CSE(DS) - Non JIGNASA Member',
       price: '₹99',
-      duration: 'Lifetime',
+      duration: 'Semester',
       features: [
         'Access to all learning domains',
         'Progress tracking',
@@ -21,7 +21,7 @@ const RegisterPlans = () => {
     {
       name: 'Other Branches (RGMCET)',
       price: '₹249',
-      duration: 'Lifetime',
+      duration: 'Semester',
       features: [
         'Access to all learning domains',
         'Progress tracking',
@@ -34,7 +34,7 @@ const RegisterPlans = () => {
     {
       name: 'Other Colleges',
       price: '₹499',
-      duration: 'Lifetime',
+      duration: 'Semester',
       features: [
         'Access to all learning domains',
         'Progress tracking',
