@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { userManager } from '../utils/userManager'
 
 const TestUserSetup = () => {
@@ -170,12 +171,12 @@ const TestUserSetup = () => {
             <p className="text-gray-400 text-sm mb-4">
               After creating a user, you can test login at:
             </p>
-            <a 
-              href="/login" 
+            <Link 
+              to="/login" 
               className="btn-secondary w-full"
             >
               🚀 Go to Login Page
-            </a>
+            </Link>
           </div>
         </div>
       </div>

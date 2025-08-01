@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useAuth } from '../../context/AuthContext'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import logoImage from '../../assets/Jignasa space Navbar Logo.png'
 
 const Login = () => {
@@ -101,7 +101,7 @@ const Login = () => {
               />
             </div>
             <div className="text-right mb-2">
-              <a href="/forgot-password" className="text-accent hover:text-accent-light text-sm">Forgot Password?</a>
+              <Link to="/forgot-password" className="text-accent hover:text-accent-light text-sm">Forgot Password?</Link>
             </div>
 
             <button
@@ -123,9 +123,9 @@ const Login = () => {
           <div className="mt-6 text-center">
             <p className="text-gray-400 text-sm">
               Don't have an account?{' '}
-              <a href="/register" className="text-accent hover:text-accent-light">
+              <Link to="/register" className="text-accent hover:text-accent-light">
                 Sign up here
-              </a>
+              </Link>
             </p>
           </div>
 

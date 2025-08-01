@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { userManager } from '../utils/userManager'
 
 const BulkUserImport = () => {
@@ -369,12 +370,12 @@ Udaykumar,24095a3219@rgmcet.edu.in,uday@UK#788`
           )}
 
           <div className="mt-6 text-center">
-            <a 
-              href="/login" 
+            <Link 
+              to="/login" 
               className="btn-secondary"
             >
               🚀 Go to Login Page
-            </a>
+            </Link>
           </div>
         </div>
       </div>

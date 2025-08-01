@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { supabase } from '../../lib/supabase'
 import logoImage from '../../assets/Jignasa space Navbar Logo.png'
 
@@ -81,7 +82,7 @@ const ResetPassword = () => {
             </button>
           </form>
           <div className="mt-6 text-center">
-            <a href="/login" className="text-accent hover:text-accent-light text-sm">← Back to Login</a>
+            <Link to="/login" className="text-accent hover:text-accent-light text-sm">← Back to Login</Link>
           </div>
         </div>
       </div>

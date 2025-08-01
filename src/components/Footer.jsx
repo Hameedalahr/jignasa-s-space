@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import logoImage from '../assets/Jignasa space Navbar Logo.png'
 import rgmLogo from '../assets/rgm logo.png'
 import dataScienceLogo from '../assets/datascience logo.png'
@@ -47,9 +48,9 @@ const Footer = () => {
             <div>
               <h4 className="text-lg font-semibold text-white mb-4">Quick Links</h4>
               <div className="space-y-2 text-gray-400 text-sm">
-                <p><a href="/explore" className="hover:text-yellow-400 transition-colors">Explore Domains</a></p>
-                <p><a href="/dashboard" className="hover:text-yellow-400 transition-colors">My Dashboard</a></p>
-                <p><a href="/about" className="hover:text-yellow-400 transition-colors">About Us</a></p>
+                <p><Link to="/explore" className="hover:text-yellow-400 transition-colors">Explore Domains</Link></p>
+                <p><Link to="/dashboard" className="hover:text-yellow-400 transition-colors">My Dashboard</Link></p>
+                <p><Link to="/about" className="hover:text-yellow-400 transition-colors">About Us</Link></p>
                 <p><a href="#" className="hover:text-yellow-400 transition-colors">Help Center</a></p>
               </div>
             </div>
