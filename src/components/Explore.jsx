@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom'
+import { getTotalResources, getTotalProjects } from '../utils/resourceCounter'
 
 const Explore = () => {
   const navigate = useNavigate()
@@ -75,12 +76,12 @@ const Explore = () => {
               <div className="text-sm text-gray-400 mt-1">Comprehensive Learning Paths</div>
             </div>
             <div className="p-6 rounded-xl border-2 border-yellow-400 bg-black hover:bg-yellow-900/10 transition-all duration-300">
-              <div className="text-4xl font-bold text-green-400 mb-2">1000+</div>
+              <div className="text-4xl font-bold text-green-400 mb-2">{getTotalResources()}+</div>
               <div className="text-lg text-white font-semibold">Resources</div>
               <div className="text-sm text-gray-400 mt-1">Curated Learning Materials</div>
             </div>
             <div className="p-6 rounded-xl border-2 border-yellow-400 bg-black hover:bg-yellow-900/10 transition-all duration-300">
-              <div className="text-4xl font-bold text-orange-400 mb-2">50+</div>
+              <div className="text-4xl font-bold text-orange-400 mb-2">{getTotalProjects()}+</div>
               <div className="text-lg text-white font-semibold">Projects</div>
               <div className="text-sm text-gray-400 mt-1">Hands-on Experience</div>
             </div>

@@ -81,38 +81,26 @@ const phaseTopics = {
   }
 }
 
-const domainKeys = Object.keys(resources)
+// Import actual domain totals from utility
+import { domainTotals } from '../../utils/resourceCounter'
 
-const getDomainTotals = () => {
-  const totals = {}
-  domainKeys.forEach(domainId => {
-    let resourceCount = 0
-    if (phaseTopics[domainId]) {
-      // For domains with phases, sum all resources for all topics in all phases
-      const phases = phaseTopics[domainId]
-      Object.values(phases).forEach(topicArr => {
-        topicArr.forEach(type => {
-          resourceCount += (resources[domainId] || []).filter(r => r.type === type).length
-        })
-      })
-    } else {
-      // For other domains, sum by flat type list
-      const topicTypes = domainTopics[domainId] || []
-      topicTypes.forEach(type => {
-        resourceCount += (resources[domainId] || []).filter(r => r.type === type).length
-      })
-    }
-    totals[domainId] = {
-      resources: resourceCount,
-      projects: (projects[domainId] || []).length,
-      name: domainId,
-      logo: '' // You can add logo mapping if needed
-    }
-  })
-  return totals
+// Domain names and logos mapping
+const domainInfo = {
+  'fullstack': { name: 'Full Stack Web Development', logo: '💻' },
+  'dataeng': { name: 'Data Engineering', logo: '⚙️' },
+  'dataanalyst': { name: 'Data Analyst', logo: '📊' },
+  'datascientist': { name: 'Data Scientist', logo: '🧠' },
+  'uiux': { name: 'UI/UX Design', logo: '🎨' },
+  'product': { name: 'Product Manager', logo: '📋' },
+  'hr': { name: 'HR Manager', logo: '👥' },
+  'marketing': { name: 'Marketing', logo: '📈' },
+  'freelance': { name: 'Freelance', logo: '💼' },
+  'dsa': { name: 'Data Structures & Algorithms', logo: '🔢' },
+  'java': { name: 'Java Programming', logo: '🔷' },
+  'python': { name: 'Python Programming', logo: '🟡' },
+  'cpp': { name: 'C++ Programming', logo: '🔶' },
+  'c': { name: 'C Programming', logo: '🔺' }
 }
-
-const domainTotals = getDomainTotals()
 
 const ADMIN_EMAIL_KEY = 'jignasa_admin_emails'
 function getAdminEmails() {
@@ -150,16 +138,20 @@ const Dashboard = () => {
         const { data: dashboardProgress, error } = await progressService.getDashboardProgress(user.id)
         let updatedProgress = []
         if (!error && dashboardProgress) {
-          updatedProgress = domainKeys.map(domainId => {
+          updatedProgress = Object.keys(domainTotals).map(domainId => {
             const domainData = domainTotals[domainId]
+            const domainInfoData = domainInfo[domainId] || { name: domainId, logo: '📚' }
             const dbProgress = dashboardProgress.find(p => p.domain_id === domainId)
             const totalItems = domainData.resources + domainData.projects
             const completed = dbProgress ? dbProgress.completed : 0
             const percentage = totalItems > 0 ? Math.round((completed / totalItems) * 100) : 0
+            
+            console.log(`Domain: ${domainId}, Name: ${domainInfoData.name}, Resources: ${domainData.resources}, Projects: ${domainData.projects}, Completed: ${completed}`)
+            
             return {
               id: domainId,
-              name: domainId,
-              logo: domainData.logo,
+              name: domainInfoData.name,
+              logo: domainInfoData.logo,
               completed: completed,
               total: totalItems,
               percentage: percentage
@@ -227,7 +219,10 @@ const Dashboard = () => {
     setShowClearProgressWarning(false)
     if (!user) return
     // Clear progress for all domains
-    for (const domainId of domainKeys) {
+    const domainIds = Object.keys(domainTotals)
+    console.log('Clearing progress for domains:', domainIds)
+    for (const domainId of domainIds) {
+      console.log(`Clearing progress for domain: ${domainId}`)
       await progressService.saveProgress(user.id, domainId, { resources: {}, projects: {} })
     }
     // Force reload
@@ -239,7 +234,10 @@ const Dashboard = () => {
     setShowClearFavoritesWarning(false)
     if (!user) return
     // Clear favorites for all domains
-    for (const domainId of domainKeys) {
+    const domainIds = Object.keys(domainTotals)
+    console.log('Clearing favorites for domains:', domainIds)
+    for (const domainId of domainIds) {
+      console.log(`Clearing favorites for domain: ${domainId}`)
       await progressService.saveFavorites(user.id, domainId, { resources: {}, projects: {} })
     }
     // Force reload

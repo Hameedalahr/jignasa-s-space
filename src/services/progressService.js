@@ -3,29 +3,20 @@ import { supabase } from '../lib/supabase'
 // Check if we're in development mode
 const isDevelopmentMode = !import.meta.env.VITE_SUPABASE_URL
 
-// Domain data structure with actual total items per domain
-const domainTotals = {
-  'fullstack': { resources: 4, projects: 3 },
-  'dataeng': { resources: 3, projects: 2 },
-  'dataanalyst': { resources: 3, projects: 2 },
-  'datascientist': { resources: 3, projects: 2 },
-  'uiux': { resources: 3, projects: 2 },
-  'product': { resources: 3, projects: 2 },
-  'hr': { resources: 3, projects: 2 },
-  'marketing': { resources: 3, projects: 2 },
-  'freelance': { resources: 3, projects: 2 },
-  'dsa': { resources: 6, projects: 0 }
-}
+// Import actual domain totals from utility
+import { domainTotals } from '../utils/resourceCounter'
 
 export const progressService = {
   // Save user progress to database
   async saveProgress(userId, domainId, progressData) {
+    console.log(`Saving progress for domain: ${domainId}`, progressData)
     if (isDevelopmentMode) {
       // In development mode, save to localStorage with user prefix
       const key = `userProgress_${userId}`
       const existingData = JSON.parse(localStorage.getItem(key) || '{}')
       existingData[domainId] = progressData
       localStorage.setItem(key, JSON.stringify(existingData))
+      console.log(`Progress saved for domain: ${domainId}`)
       return { data: progressData, error: null }
     }
 
@@ -95,12 +86,14 @@ export const progressService = {
 
   // Save user favorites to database
   async saveFavorites(userId, domainId, favoritesData) {
+    console.log(`Saving favorites for domain: ${domainId}`, favoritesData)
     if (isDevelopmentMode) {
       // In development mode, save to localStorage with user prefix
       const key = `userFavorites_${userId}`
       const existingData = JSON.parse(localStorage.getItem(key) || '{}')
       existingData[domainId] = favoritesData
       localStorage.setItem(key, JSON.stringify(existingData))
+      console.log(`Favorites saved for domain: ${domainId}`)
       return { data: favoritesData, error: null }
     }
 
@@ -196,6 +189,10 @@ export const progressService = {
           })
         }
       })
+      
+      console.log('Available domains in domainTotals:', Object.keys(domainTotals))
+      console.log('Progress data keys:', Object.keys(progressData))
+      console.log('Dashboard progress:', dashboardProgress)
       
       return { data: dashboardProgress, error: null }
     }

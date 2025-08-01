@@ -4,18 +4,25 @@ import { progressService } from '../services/progressService'
 import { useNavigate } from 'react-router-dom'
 import { ShimmerStats, ShimmerDomainCard, ShimmerFavoriteItem, ShimmerSessionDetails } from './Shimmer'
 
-// Domain data structure with actual total items per domain
-const domainTotals = {
-  'fullstack': { resources: 4, projects: 3, name: 'Full Stack Web Development', logo: '💻' },
-  'dataeng': { resources: 3, projects: 2, name: 'Data Engineering', logo: '⚙️' },
-  'dataanalyst': { resources: 3, projects: 2, name: 'Data Analyst', logo: '📊' },
-  'datascientist': { resources: 3, projects: 2, name: 'Data Scientist', logo: '🧠' },
-  'uiux': { resources: 3, projects: 2, name: 'UI/UX Design', logo: '🎨' },
-  'product': { resources: 3, projects: 2, name: 'Product Manager', logo: '📋' },
-  'hr': { resources: 3, projects: 2, name: 'HR Manager', logo: '👥' },
-  'marketing': { resources: 3, projects: 2, name: 'Marketing', logo: '📈' },
-  'freelance': { resources: 3, projects: 0, name: 'Freelance', logo: '💼' },
-  'dsa': { resources: 6, projects: 0, name: 'Data Structures & Algorithms', logo: '🔢' }
+// Import actual domain totals from utility
+import { domainTotals } from '../utils/resourceCounter'
+
+// Domain names and logos mapping
+const domainInfo = {
+  'fullstack': { name: 'Full Stack Web Development', logo: '💻' },
+  'dataeng': { name: 'Data Engineering', logo: '⚙️' },
+  'dataanalyst': { name: 'Data Analyst', logo: '📊' },
+  'datascientist': { name: 'Data Scientist', logo: '🧠' },
+  'uiux': { name: 'UI/UX Design', logo: '🎨' },
+  'product': { name: 'Product Manager', logo: '📋' },
+  'hr': { name: 'HR Manager', logo: '👥' },
+  'marketing': { name: 'Marketing', logo: '📈' },
+  'freelance': { name: 'Freelance', logo: '💼' },
+  'dsa': { name: 'Data Structures & Algorithms', logo: '🔢' },
+  'java': { name: 'Java Programming', logo: '🔷' },
+  'python': { name: 'Python Programming', logo: '🟡' },
+  'cpp': { name: 'C++ Programming', logo: '🔶' },
+  'c': { name: 'C Programming', logo: '🔺' }
 }
 
 const MyDashboard = () => {
@@ -52,16 +59,18 @@ const MyDashboard = () => {
         } else if (dashboardProgress && dashboardProgress.length > 0) {
           const updatedProgress = Object.keys(domainTotals).map(domainId => {
             const domainData = domainTotals[domainId]
+            const domainInfoData = domainInfo[domainId] || { name: domainId, logo: '📚' }
             const dbProgress = dashboardProgress.find(p => p.domain_id === domainId)
             const totalItems = domainData.resources + domainData.projects
             const completed = dbProgress ? dbProgress.completed : 0
             const percentage = totalItems > 0 ? Math.round((completed / totalItems) * 100) : 0
             
-            console.log(`Domain: ${domainData.name}, Completed: ${completed}, Total: ${totalItems}, Percentage: ${percentage}%`)
+            console.log(`Domain: ${domainInfoData.name}, Completed: ${completed}, Total: ${totalItems}, Percentage: ${percentage}%`)
             
             return {
               id: domainId,
-              name: domainData.name,
+              name: domainInfoData.name,
+              logo: domainInfoData.logo,
               completed: completed,
               total: totalItems,
               percentage: percentage
@@ -84,11 +93,13 @@ const MyDashboard = () => {
           // Initialize with zero progress
           const initialProgress = Object.keys(domainTotals).map(domainId => {
             const domainData = domainTotals[domainId]
+            const domainInfoData = domainInfo[domainId] || { name: domainId, logo: '📚' }
             const totalItems = domainData.resources + domainData.projects
             
             return {
               id: domainId,
-              name: domainData.name,
+              name: domainInfoData.name,
+              logo: domainInfoData.logo,
               completed: 0,
               total: totalItems,
               percentage: 0
