@@ -13,6 +13,8 @@ import activity4Img from '../assets/Our Journey/Activity 4.jpg'
 import activity5Img from '../assets/Our Journey/Activity 5.jpg'
 import activity6Img from '../assets/Our Journey/Activity 6.jpg'
 import activity7Img from '../assets/Our Journey/Activity 7.jpeg'
+import baskharaRaoImg from '../assets/special thanks/Baskhara Rao.JPG'
+import kiranRaoImg from '../assets/special thanks/Kiran Rao.JPG'
 
 
 const AboutUs = () => {
@@ -128,35 +130,19 @@ const AboutUs = () => {
   const thanksMembers = [
     {
       id: 1,
-      name: 'Dr. Robert Wilson',
-      role: 'Academic Advisor',
-      photo: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=face',
-      description: 'Providing invaluable guidance and expertise in educational methodology and curriculum development.',
-      contribution: 'Educational Strategy, Curriculum Design'
+      name: 'Dr. B.Bhaskara Rao',
+      role: 'Head of Department ( CSE DATA SCIENCE )',
+      photo: baskharaRaoImg,
+      description: 'Providing invaluable guidance and support to our learning community.',
+      contribution: 'Mentorship & Guidance'
     },
     {
       id: 2,
-      name: 'Maria Garcia',
-      role: 'Community Manager',
-      photo: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&h=200&fit=crop&crop=face',
+      name: 'Dr. P Kiran Rao',
+      role: 'Data Science Clubs Mentor',
+      photo: kiranRaoImg,
       description: 'Building and nurturing our global community of learners and educators.',
-      contribution: 'Community Building, User Engagement'
-    },
-    {
-      id: 3,
-      name: 'David Kim',
-      role: 'Technical Advisor',
-      photo: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&h=200&fit=crop&crop=face',
-      description: 'Ensuring our platform remains cutting-edge with the latest technological advancements.',
-      contribution: 'Technical Architecture, Innovation'
-    },
-    {
-      id: 4,
-      name: 'Lisa Anderson',
-      role: 'Content Strategist',
-      photo: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=200&h=200&fit=crop&crop=face',
-      description: 'Creating engaging and educational content that resonates with learners worldwide.',
-      contribution: 'Content Strategy, Educational Content'
+      contribution: 'Technical Support & Assistance'
     }
   ]
 
@@ -248,17 +234,22 @@ const AboutUs = () => {
         </div>
       </section>
 
-      {/* 3. Special Thanks - Responsive Grid */}
+      {/* 3. Special Thanks - Row Layout */}
       <section className="py-16 bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-yellow-300 text-center mb-12">Special Thanks</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-8">
             {thanksMembers.map((member) => (
               <div key={member.id} className="bg-black rounded-2xl p-6 flex flex-col items-center shadow-lg hover:shadow-yellow-400/30 transition-shadow duration-300 border-2 border-yellow-900 hover:border-yellow-400">
-                <img src={member.photo} alt={member.name} className="w-20 h-20 rounded-full mb-4 border-4 border-yellow-400 object-cover shadow-md" />
-                <h3 className="text-lg font-bold text-yellow-300 mb-1 text-center">{member.name}</h3>
-                <div className="text-yellow-400 text-xs mb-2 text-center">{member.role}</div>
-                <p className="text-gray-300 text-xs mb-2 text-center">{member.description}</p>
+                <img 
+                  src={member.photo} 
+                  alt={member.name} 
+                  className="w-32 h-32 rounded-full mb-4 border-4 border-yellow-400 object-cover shadow-md bg-gray-800" 
+                  style={{ objectPosition: 'center', width: '128px', height: '128px', aspectRatio: '1/1' }}
+                />
+                <h3 className="text-xl font-bold text-yellow-300 mb-1 text-center">{member.name}</h3>
+                <div className="text-yellow-400 text-sm mb-2 text-center">{member.role}</div>
+                <p className="text-gray-300 text-sm mb-2 text-center">{member.description}</p>
                 <div className="text-xs text-gray-400 text-center">{member.contribution}</div>
               </div>
             ))}
