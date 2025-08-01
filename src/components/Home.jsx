@@ -26,7 +26,7 @@ const Home = () => {
         <div className="text-center mb-8">
           <div className="w-32 h-32 mb-4 mx-auto">
             <img 
-              src="/src/assets/Jignasa space Navbar Logo.png" 
+              src="/assets/Jignasa space Navbar Logo.png" 
               alt="Jignasa's Space" 
               className="w-full h-full object-contain"
             />

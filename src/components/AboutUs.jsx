@@ -155,7 +155,7 @@ const AboutUs = () => {
       <div className="bg-gradient-to-r from-yellow-400/10 via-black to-yellow-400/10 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <img 
-            src="/src/assets/Jignasa space Navbar Logo.png" 
+            src="/assets/Jignasa space Navbar Logo.png" 
             alt="Jignasa's Space Logo" 
             className="mx-auto mb-6 max-w-md"
           />
@@ -268,7 +268,7 @@ const AboutUs = () => {
               <div className="flex-shrink-0">
                 <div className="bg-black rounded-2xl p-6 border-2 border-yellow-900 hover:border-yellow-400 transition-all duration-300 shadow-lg hover:shadow-yellow-400/30">
                   <img 
-                    src="/src/assets/clubs/club1.png" 
+                    src="/assets/clubs/club1.png" 
                     alt="Club 1"
                     className="w-48 h-32 rounded-xl object-cover mb-3 border-2 border-yellow-400"
                   />
@@ -277,7 +277,7 @@ const AboutUs = () => {
               <div className="flex-shrink-0">
                 <div className="bg-black rounded-2xl p-6 border-2 border-yellow-900 hover:border-yellow-400 transition-all duration-300 shadow-lg hover:shadow-yellow-400/30">
                   <img 
-                    src="/src/assets/clubs/club2.png" 
+                    src="/assets/clubs/club2.png" 
                     alt="Club 2"
                     className="w-48 h-32 rounded-xl object-cover mb-3 border-2 border-yellow-400"
                   />
@@ -286,7 +286,7 @@ const AboutUs = () => {
               <div className="flex-shrink-0">
                 <div className="bg-black rounded-2xl p-6 border-2 border-yellow-900 hover:border-yellow-400 transition-all duration-300 shadow-lg hover:shadow-yellow-400/30">
                   <img 
-                    src="/src/assets/clubs/club3.png" 
+                    src="/assets/clubs/club3.png" 
                     alt="Club 3"
                     className="w-48 h-32 rounded-xl object-cover mb-3 border-2 border-yellow-400"
                   />
@@ -295,7 +295,7 @@ const AboutUs = () => {
               <div className="flex-shrink-0">
                 <div className="bg-black rounded-2xl p-6 border-2 border-yellow-900 hover:border-yellow-400 transition-all duration-300 shadow-lg hover:shadow-yellow-400/30">
                   <img 
-                    src="/src/assets/clubs/club4.png" 
+                    src="/assets/clubs/club4.png" 
                     alt="Club 4"
                     className="w-48 h-32 rounded-xl object-cover mb-3 border-2 border-yellow-400"
                   />
