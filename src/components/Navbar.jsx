@@ -9,8 +9,17 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   const handleSignOut = async () => {
-    await signOut()
-    setIsMobileMenuOpen(false)
+    try {
+      console.log('Signing out...')
+      const result = await signOut()
+      console.log('Sign out result:', result)
+      setIsMobileMenuOpen(false)
+      
+      // Force redirect to login page
+      window.location.href = '/login'
+    } catch (error) {
+      console.error('Sign out error:', error)
+    }
   }
 
   const isActive = (path) => {
