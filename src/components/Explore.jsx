@@ -6,8 +6,8 @@ const Explore = () => {
 
   const domains = [
    
-    // { id: 'c', name: 'C Programming', icon: 'fa-solid fa-c', color: '#A8B9CC', description: 'Start your programming journey with C language' },
-    // { id: 'cpp', name: 'C++ Programming', icon: 'fa-solid fa-code', color: '#00599C', description: 'Explore C++ programming concepts and projects' },
+    { id: 'c', name: 'C Programming', icon: 'fa-solid fa-c', color: '#A8B9CC', description: 'Start your programming journey with C language' },
+    { id: 'cpp', name: 'C++ Programming', icon: 'fa-solid fa-code', color: '#00599C', description: 'Explore C++ programming concepts and projects' },
     { id: 'java', name: 'Java Programming', icon: 'fa-brands fa-java', color: ' #FFD43B', description: 'Master Java programming from basics to advanced topics' },
     { id: 'python', name: 'Python Programming', icon: 'fa-brands fa-python', color: '#007396', description: 'Learn Python for all levels and applications' },
     { id: 'fullstack', name: 'MERN Stack Web Development', icon: 'fa-brands fa-react', color: '#61DAFB', description: 'Master the complete web development stack' },
